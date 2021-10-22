@@ -1,0 +1,90 @@
+fun main()V {
+    var a1:Point = Point()
+    a1.x = 130
+    a1.y = 4
+
+    var a2:Point = Point()
+    a2.x = 130
+    a2.y = 9
+
+    println(a1.toString())
+    println(a1.equals(a2))
+    println(a1.symmetry())
+
+}
+
+open class Point {
+    var x = 0
+    var y = 0
+
+    override fun toString(): String {
+        return "$x, $y"
+
+    }
+
+    override fun equals(other : Any?): Boolean {
+        if (other is Point) {
+            return (x == other.x || y == other.y)
+        }
+        return true
+
+        return false
+    }
+
+    fun symmetry(): Pair<Int, Int> {
+
+        return Pair(-x, - y)
+
+    }
+}
+
+
+
+fun main() {
+    var g1:Fraction = Fraction()
+    g1.numerator = 8.0
+    g1.denominator = 4.0
+
+
+    var g2:Fraction = Fraction()
+    g2.numerator = 9.0
+    g2.denominator = 4.0
+
+    println(g1.equals(g2))
+    println(g1.toString())
+    println(g2.toString())
+    println(g1.addition(g2))
+
+
+}
+class Fraction {
+    var numerator: Double = 0.0
+    var denominator: Double = 0.0
+
+    override fun toString(): String {
+        return "$numerator/$denominator"
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (other is Fraction){
+            if (numerator*other.denominator/denominator == other.numerator)
+                return true
+        }
+        return false
+    }
+
+    fun addition(other: Fraction): Double {
+        if (other is Fraction) {
+            if (denominator == other.denominator){
+                return numerator/denominator + other.numerator/other.denominator
+            }else if (denominator != other.denominator)
+                return (numerator * other.denominator + other.numerator * denominator) / denominator * other.denominator
+
+
+        }
+        return 0.0
+
+    }
+
+
+}
